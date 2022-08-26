@@ -471,14 +471,14 @@ int net_max(
     for (at = 0; at < ctl->maxTTL; at++) {
         if (host_addr_cmp(at , remoteaddress, ctl->af) == 0) {
             return at + 1;
-        } else if (host[at].err != 0) {
-            /*
-                If a hop has returned an ICMP error
-                (such as "no route to host") then we'll consider that the
-                final hop.
-            */
+        } /* else if (host[at].err != 0) {
+            
+            //    If a hop has returned an ICMP error
+            //    (such as "no route to host") then we'll consider that the
+            //    final hop.
+            
             return at + 1;
-        } else if (host_addr_cmp(at, &ctl->unspec_addr, ctl->af) != 0) {
+        } */ else if (host_addr_cmp(at, &ctl->unspec_addr, ctl->af) != 0) {
             max = at + 2;
         }
     }
